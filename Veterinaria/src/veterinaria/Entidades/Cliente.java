@@ -14,6 +14,18 @@ public class Cliente {
     public Cliente() {
     }
 
+    /**
+     * Constructor para inicializar un cliente sin ID.
+     *
+     * @param dni               el DNI del cliente
+     * @param apellido          el apellido del cliente
+     * @param nombre            el nombre del cliente
+     * @param direccion         la dirección del cliente
+     * @param telefono          el teléfono del cliente
+     * @param personaAlternativa la persona alternativa de contacto del cliente
+     * @param estado            el estado del cliente
+     */
+
     public Cliente(int dni, String apellido, String nombre, String direccion, long telefono, String personaAlternativa, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
@@ -23,6 +35,19 @@ public class Cliente {
         this.personaAlternativa = personaAlternativa;
         this.estado = estado;
     }
+
+    /**
+     * Constructor para inicializar un cliente con ID.
+     *
+     * @param idCliente         el ID del cliente
+     * @param dni               el DNI del cliente
+     * @param apellido          el apellido del cliente
+     * @param nombre            el nombre del cliente
+     * @param direccion         la dirección del cliente
+     * @param telefono          el teléfono del cliente
+     * @param personaAlternativa la persona alternativa de contacto del cliente
+     * @param estado            el estado del cliente
+     */
 
     public Cliente(int idCliente, int dni, String apellido, String nombre, String direccion, long telefono, String personaAlternativa, boolean estado) {
         this.idCliente = idCliente;
@@ -48,7 +73,11 @@ public class Cliente {
     }
 
     public void setDni(int dni) {
-        this.dni = dni;
+        if (dni > 0) {
+            this.dni = dni;
+        } else {
+            throw new IllegalArgumentException("El DNI debe ser positivo");
+        }
     }
 
     public String getApellido() {
@@ -56,7 +85,11 @@ public class Cliente {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        if (apellido != null && !apellido.trim().isEmpty()) {
+            this.apellido = apellido;
+        } else {
+            throw new IllegalArgumentException("El apellido no puede estar vacío");
+        }
     }
 
     public String getNombre() {
@@ -64,7 +97,11 @@ public class Cliente {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre != null && !nombre.trim().isEmpty()) {
+            this.nombre = nombre;
+        } else {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
     }
 
     public String getDireccion() {
@@ -72,7 +109,11 @@ public class Cliente {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        if (direccion != null && !direccion.trim().isEmpty()) {
+            this.direccion = direccion;
+        } else {
+            throw new IllegalArgumentException("La dirección no puede estar vacía");
+        }
     }
 
     public long getTelefono() {
@@ -80,7 +121,11 @@ public class Cliente {
     }
 
     public void setTelefono(long telefono) {
-        this.telefono = telefono;
+        if (telefono > 0) {
+            this.telefono = telefono;
+        } else {
+            throw new IllegalArgumentException("El teléfono debe ser con números positivo");
+        }
     }
 
     public String getPersonaAlternativa() {
@@ -88,7 +133,11 @@ public class Cliente {
     }
 
     public void setPersonaAlternativa(String personaAlternativa) {
-        this.personaAlternativa = personaAlternativa;
+        if (personaAlternativa != null && !personaAlternativa.trim().isEmpty()) {
+            this.personaAlternativa = personaAlternativa;
+        } else {
+            throw new IllegalArgumentException("La persona alternativa no puede estar vacía");
+        }
     }
 
     public boolean isEstado() {
@@ -105,4 +154,33 @@ public class Cliente {
             + direccion + " " + telefono + " " + personaAlternativa + " " + estado;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cliente cliente = (Cliente) o;
+
+        if (idCliente != cliente.idCliente) return false;
+        if (dni != cliente.dni) return false;
+        if (telefono != cliente.telefono) return false;
+        if (estado != cliente.estado) return false;
+        if (!apellido.equals(cliente.apellido)) return false;
+        if (!nombre.equals(cliente.nombre)) return false;
+        if (!direccion.equals(cliente.direccion)) return false;
+        return personaAlternativa.equals(cliente.personaAlternativa);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idCliente;
+        result = 31 * result + dni;
+        result = 31 * result + apellido.hashCode();
+        result = 31 * result + nombre.hashCode();
+        result = 31 * result + direccion.hashCode();
+        result = 31 * result + Long.hashCode(telefono);
+        result = 31 * result + personaAlternativa.hashCode();
+        result = 31 * result + (estado ? 1 : 0);
+        return result;
+    }
 }
