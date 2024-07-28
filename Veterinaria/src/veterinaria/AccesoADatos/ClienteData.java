@@ -12,7 +12,7 @@ import org.mariadb.jdbc.Statement;
 import veterinaria.Entidades.Cliente;
 
 public class ClienteData {
-    private Connection con = null;
+    private final Connection con;
     private static final Logger logger = Logger.getLogger(ClienteData.class.getName());
 
     public ClienteData() {
@@ -65,7 +65,7 @@ public class ClienteData {
             ps.setInt(1, dni);
             ps.executeUpdate();
             logger.log(Level.INFO, "Cliente eliminado con exito: DNI {0}", dni);
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             logger.log(Level.SEVERE, "Error al eliminar el cliente", ex);
         }
     }
@@ -117,7 +117,7 @@ public class ClienteData {
     }
 
     public ArrayList<Cliente> listarClientes2(){
-    ArrayList <Cliente> lista = new ArrayList();
+    ArrayList<Cliente> lista = new ArrayList<>();
         try {
             String sql = "SELECT * FROM cliente";
             PreparedStatement ps = con.prepareStatement(sql);
