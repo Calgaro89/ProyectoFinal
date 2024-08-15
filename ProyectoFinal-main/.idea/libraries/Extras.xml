@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Extras">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Veterinaria/Extras/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Veterinaria/Extras/JTattoo-1.6.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Veterinaria/Extras/mariadb-java-client-3.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -184,7 +184,6 @@ public class Menu extends javax.swing.JFrame {
         jGestionTratamiento.setToolTipText("AGREGAR TRATAMIENTO");
         jGestionTratamiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jGestionTratamiento.setMinimumSize(new java.awt.Dimension(0, 0));
-        jGestionTratamiento.setOpaque(false);
         jGestionTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGestionTratamientoActionPerformed(evt);
@@ -253,7 +252,6 @@ public class Menu extends javax.swing.JFrame {
         jAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veterinaria/Recursos/administracion.png"))); // NOI18N
         jAdministracion.setToolTipText("Administracion");
         jAdministracion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jAdministracion.setOpaque(false);
         jAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAdministracionActionPerformed(evt);
